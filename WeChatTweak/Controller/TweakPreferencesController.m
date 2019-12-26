@@ -1,24 +1,25 @@
 //
-//  TweakPreferecesController.m
+//  TweakPreferencesController.m
 //  WeChatTweak
 //
 //  Created by Sunnyyoung on 2017/8/12.
 //  Copyright © 2017年 Sunnyyoung. All rights reserved.
 //
 
-#import "TweakPreferecesController.h"
+#import "TweakPreferencesController.h"
 #import "NSBundle+WeChatTweak.h"
 #import "WTConfigManager.h"
 
-@interface TweakPreferecesController () <MASPreferencesViewController>
+@interface TweakPreferencesController () <MASPreferencesViewController>
 
 @property (weak) IBOutlet NSPopUpButton *autoAuthButton;
 @property (weak) IBOutlet NSPopUpButton *notificationTypeButton;
 @property (weak) IBOutlet NSPopUpButton *compressedJSONEnabledButton;
+@property (weak) IBOutlet NSPopUpButton *revokedMessageStyleButton;
 
 @end
 
-@implementation TweakPreferecesController
+@implementation TweakPreferencesController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +38,7 @@
     [self.autoAuthButton selectItemAtIndex:enabledAutoAuth ? 1 : 0];
     [self.notificationTypeButton selectItemAtIndex:notificationType];
     [self.compressedJSONEnabledButton selectItemAtIndex:configManager.compressedJSONEnabled ? 0 : 1];
+    [self.revokedMessageStyleButton selectItemAtIndex:configManager.revokedMessageStyle];
 }
 
 #pragma mark - Event method
@@ -55,6 +57,10 @@
 - (IBAction)switchCompressedJSONEnabledAction:(NSPopUpButton *)sender {
     BOOL enabled = sender.indexOfSelectedItem == 0;
     WTConfigManager.sharedInstance.compressedJSONEnabled = enabled;
+}
+
+- (IBAction)switchRevokedMessageStyleButton:(NSPopUpButton *)sender {
+    WTConfigManager.sharedInstance.revokedMessageStyle = sender.indexOfSelectedItem;
 }
 
 #pragma mark - MASPreferencesViewController

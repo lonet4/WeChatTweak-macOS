@@ -11,6 +11,16 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+typedef NS_ENUM(unsigned int, MessageDataType) {
+    MessageDataTypeText     = 1,
+    MessageDataTypeImage    = 3,
+    MessageDataTypeVoice    = 34,
+    MessageDataTypeVideo    = 43,
+    MessageDataTypeSticker  = 47,
+    MessageDataTypeAppUrl   = 49,
+    MessageDataTypePrompt   = 10000
+};
+
 @interface NSString (MD5)
 
 - (NSString *)md5String;
@@ -28,6 +38,12 @@
 
 @end
 
+@interface PathUtility : NSObject
+
++ (NSString *)GetCurUserDocumentPath;
+
+@end
+
 @interface MMSearchResultItem : NSObject
 
 @property(nonatomic) unsigned long long type; // 0 is single chat, 1 is group chat
@@ -37,15 +53,18 @@
 
 @interface MessageData: NSObject
 
-@property(nonatomic) unsigned int messageType;
+@property(nonatomic) MessageDataType messageType;
 @property(nonatomic) unsigned int msgStatus;
+@property(nonatomic) long long mesSvrID;
 @property(retain, nonatomic) NSString *toUsrName;
 @property(retain, nonatomic) NSString *fromUsrName;
 @property(retain, nonatomic) NSString *msgContent;
 @property(nonatomic) unsigned int msgCreateTime;
 @property(nonatomic) unsigned int mesLocalID;
 
+- (instancetype)initWithMsgType:(long long)arg1;
 - (BOOL)isSendFromSelf;
+- (id)getChatNameForCurMsg;
 
 @end
 
@@ -93,7 +112,8 @@
 - (id)GetMsgData:(id)arg1 svrId:(unsigned long long)arg2;
 - (void)DelMsg:(id)arg1 msgList:(id)arg2 isDelAll:(BOOL)arg3 isManual:(BOOL)arg4;
 - (void)AddLocalMsg:(id)arg1 msgData:(id)arg2;
-- (void)notifyAddMsgOnMainThread:(id)arg1 msgData:(id)arg2;
+- (void)notifyDelMsgOnMainThread:(id)arg1 msgData:(id)arg2;
+- (void)notifyAddRevokePromptMsgOnMainThread:(id)arg1 msgData:(id)arg2;
 
 @end
 
@@ -132,5 +152,24 @@
 @interface MASPreferencesWindowController: NSWindowController
 
 - (id)initWithViewControllers:(NSArray *)arg1;
+
+@end
+
+@interface MMMessageTableItem : NSObject
+
+@property(retain, nonatomic) MessageData *message;
+
+@end
+
+@interface MMMessageCellView : NSTableCellView
+
+@property(retain, nonatomic) NSView *avatarImgView;
+@property(retain, nonatomic) MMMessageTableItem *messageTableItem;
+
+@end
+
+@interface MMImageMessageCellView : MMMessageCellView
+
+@property(retain, nonatomic) NSImage *displayedImage;
 
 @end
