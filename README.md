@@ -1,90 +1,45 @@
-# WeChatTweak-macOS
+# WeChatTweak
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![README](https://img.shields.io/badge/README-English-blue.svg)](README.md)
-[![README](https://img.shields.io/badge/README-中文-blue.svg)](README-Chinese.md)
-[![README](https://img.shields.io/badge/Telegram-WeChatTweak-brightgreen.svg)](https://t.me/joinchat/B0vW8kPU5OrwdC1qRbaqRA)
-[![Backers on Open Collective](https://opencollective.com/WeChatTweak-macOS/backers/badge.svg)](#backers)
-[![Sponsors on Open Collective](https://opencollective.com/WeChatTweak-macOS/sponsors/badge.svg)](#sponsors)
+[![README](https://img.shields.io/badge/GitHub-black?logo=github&logoColor=white)](https://github.com/sunnyyoung/WeChatTweak)
+[![README](https://img.shields.io/badge/Telegram-black?logo=telegram&logoColor=white)](https://t.me/wechattweak)
+[![README](https://img.shields.io/badge/FAQ-black?logo=googledocs&logoColor=white)](https://github.com/sunnyyoung/WeChatTweak/wiki/FAQ)
 
-A dynamic library tweak for WeChat macOS.
+A command-line tool for tweaking WeChat.
 
-## Screenshot
+## 功能
 
-### Overview
+- 阻止消息撤回
+- 阻止自动更新
+- 客户端多开
 
-![Overview](Screenshot/0x01.png)
+## 安装&使用
 
-### Alfred workflow
+```bash
+# 安装
+brew install sunnyyoung/tap/wechattweak
 
-![Alfred](Screenshot/0x02.png)
+# 更新
+brew upgrade wechattweak
 
-### LaunchBar action
+# 执行 Patch
+wechattweak patch
 
-![LaunchBar](Screenshot/0x03.png)
+# 查看所有支持的 WeChat 版本
+wechattweak versions
+```
 
-## Feature
-
-- Prevent message revoked
-  - Message list notification
-  - System notification
-  - Revoke message you sent
-- Multiple WeChat Instance
-  - Right click on the dock icon to login another WeChat account
-  - Run command: `open -n /Applications/WeChat.app`
-- Auto login without authentication
-- UI Interface settings panel
-- Alfred workflow support
-- Launchbar action support
-
-## Quick Start
-
-- `sudo make install` Install or Upgrade the dylib
-- `sudo make uninstall` Uninstall the dylib
-- open `WeChat.workflow` Install Alfred workflow
-
-## Documentation
-
-For more informations, please go to the [Wiki](https://github.com/Sunnyyoung/WeChatTweak-macOS/wiki).
-
-## Dependency
-
-- [JRSwizzle](https://github.com/rentzsch/jrswizzle)
-- [insert_dylib](https://github.com/Tyilo/insert_dylib)
-
-## Reference
+## 参考
 
 - [微信 macOS 客户端无限多开功能实践](https://blog.sunnyyoung.net/wei-xin-macos-ke-hu-duan-wu-xian-duo-kai-gong-neng-shi-jian/)
 - [微信 macOS 客户端拦截撤回功能实践](https://blog.sunnyyoung.net/wei-xin-macos-ke-hu-duan-lan-jie-che-hui-gong-neng-shi-jian/)
 - [让微信 macOS 客户端支持 Alfred](https://blog.sunnyyoung.net/rang-wei-xin-macos-ke-hu-duan-zhi-chi-alfred/)
 
-## Contributors
+## 贡献者
 
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+This project exists thanks to all the people who contribute.
 
-[![Contributors](https://opencollective.com/WeChatTweak-macOS/contributors.svg?width=890&button=false)](https://github.com/Sunnyyoung/WeChatTweak-macOS/graphs/contributors)
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/WeChatTweak-macOS#backer)]
-
-[![Backers](https://opencollective.com/WeChatTweak-macOS/backers.svg?width=890)](https://opencollective.com/WeChatTweak-macOS#backers)
-
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/WeChatTweak-macOS#sponsor)]
-
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/0/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/0/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/1/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/1/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/2/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/2/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/3/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/3/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/4/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/4/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/5/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/5/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/6/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/6/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/7/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/7/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/8/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/8/website)
-[![Sponsor](https://opencollective.com/WeChatTweak-macOS/sponsor/9/avatar.svg)](https://opencollective.com/WeChatTweak-macOS/sponsor/9/website)
+[![Contributors](https://contrib.rocks/image?repo=sunnyyoung/WeChatTweak)](https://github.com/sunnyyoung/WeChatTweak/graphs/contributors)
 
 ## License
 
-The [Apache License 2.0](LICENSE).
+The [AGPL-3.0](LICENSE).
